@@ -28,4 +28,4 @@
 
 ## Cover Image
 
-![Project Cover Image](/Users/burak/Downloads/logo.png)
+![Project Cover Image](https://www.canva.com/design/DAGMV8RbuK0/ZYflfsk47T4aThAZfVwVqA/edit?utm_content=DAGMV8RbuK0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)

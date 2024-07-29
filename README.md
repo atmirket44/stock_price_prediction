@@ -1,12 +1,12 @@
-# [Your Project Title Here]
+# [Stock_Price_prediction]
 
 ## Repository Link
 
-[https://github.com/your_username/your_project_name]
+[https://github.com/atmirket44/stock_price_prediction]
 
 ## Description
 
-[Short project description here. Briefly summarize the problem you are trying to solve and the approach you're taking.]
+[The task involves predicting the closing price of a stock using a Long Short-Term Memory (LSTM) neural network. The steps include downloading historical stock data, plotting price history and candlestick charts, adding technical indicators, preparing training and test datasets, building and training the LSTM model, and evaluating the model's performance using metrics like Mean Absolute Error (MAE) and Directional Accuracy (DA)]
 
 ### Task Type
 
@@ -15,8 +15,8 @@
 ### Results Summary
 
 - **Best Model:** [Name of the best-performing model]
-- **Evaluation Metric:** [e.g., Accuracy, F1-Score, MSE]
-- **Result:** [e.g., 95% accuracy, F1-score of 0.8]
+- **Evaluation Metric:** [Mean Absolute Error (MAE), Directional Accuracy(DA)]
+- **Result:** [Directional Accuracy (DA): 0.5174506828528073,Mean Absolute Error (MAE): 1.9620724769238849]
 
 ## Documentation
 

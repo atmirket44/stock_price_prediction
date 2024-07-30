@@ -2,7 +2,9 @@
 
 ## Overview
 
-In this milestone, you will define, implement, and evaluate the machine learning model for your project. Your aim should be to improve upon the baseline model and try different approaches to achieve better performance.
+Model involves setting up an LSTM network with several layers and tuning hyperparameters to optimize performance.
+
+Model Evaluation includes making predictions with the trained model and assessing its performance using metrics like Directional Accuracy and Mean Absolute Error.
 
 ## Guidelines
 

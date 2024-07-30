@@ -1,40 +1,22 @@
-# Baseline Model
-
 {
  "cells": [
   {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "# Stock Price Prediction Using LSTM\n",
-    "\n",
-    "This notebook demonstrates how to use Long Short-Term Memory (LSTM) networks to predict stock prices. The workflow includes:\n",
-    "- Downloading historical stock data\n",
-    "- Plotting historical data\n",
-    "- Adding technical indicators\n",
-    "- Preparing data for training\n",
-    "- Building and training an LSTM model\n",
-    "- Evaluating the model\n",
-    "- Using Optuna for hyperparameter tuning\n",
-    "\n",
-    "Let's start by installing the necessary libraries."
-   ]
-  },
-  {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": null,
+   "id": "c8a8e9d0",
    "metadata": {},
    "outputs": [],
    "source": [
-    "# Install the necessary libraries\n",
+    "# Install the ta library\n",
     "!pip install ta\n",
     "!pip install mplfinance\n",
-    "!pip install optuna"
+    "!pip install optuna\n"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": null,
+   "id": "80b446b3",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -53,20 +35,13 @@
     "import matplotlib.dates as mdates\n",
     "from keras.optimizers import Adam\n",
     "\n",
-    "plt.style.use('fivethirtyeight')"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## Define Functions\n",
-    "Next, we define several functions to handle different tasks, including downloading data, plotting, adding technical indicators, and preparing data for the LSTM model."
+    "plt.style.use('fivethirtyeight')\n"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": null,
+   "id": "6a4dcdb7",
    "metadata": {},
    "outputs": [],
    "source": [
@@ -75,8 +50,16 @@
     "    print(\"Downloading stock data...\")\n",
     "    data = yf.download(ticker, start=start_date, end=end_date)\n",
     "    print(\"Data downloaded successfully!\")\n",
-    "    return data\n",
-    "\n",
+    "    return data\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "423b1d3e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to plot closing price history\n",
     "def plot_close_price_history(data):\n",
     "    print(\"Plotting close price history...\")\n",
@@ -85,8 +68,16 @@
     "    plt.plot(data['Close'])\n",
     "    plt.xlabel('Date', fontsize=18)\n",
     "    plt.ylabel('Close Price USD ($)', fontsize=18)\n",
-    "    plt.show()\n",
-    "\n",
+    "    plt.show()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c9731a3d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to plot candlestick chart\n",
     "def plot_candlestick_chart(data):\n",
     "    print(\"Plotting candlestick chart...\")\n",
@@ -97,8 +88,16 @@
     "    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))\n",
     "    ax.set_xlabel('Date', fontsize=18)\n",
     "    ax.set_ylabel('Price USD ($)', fontsize=18)\n",
-    "    plt.show()\n",
-    "\n",
+    "    plt.show()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d1dcaee4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to add technical indicators\n",
     "def add_technical_indicators(data):\n",
     "    print(\"Adding technical indicators...\")\n",
@@ -109,8 +108,16 @@
     "    data['Bollinger_High'] = ta.volatility.bollinger_hband(data['Close'])\n",
     "    data['Bollinger_Low'] = ta.volatility.bollinger_lband(data['Close'])\n",
     "    print(\"Technical indicators added successfully!\")\n",
-    "    return data\n",
-    "\n",
+    "    return data\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b22bffcb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to prepare training data with additional features\n",
     "def prepare_training_data(data, window_size):\n",
     "    print(\"Preparing training data...\")\n",
@@ -126,8 +133,16 @@
     "        y_train.append(scaled_data[i, 0])\n",
     "\n",
     "    print(\"Training data prepared!\")\n",
-    "    return np.array(x_train), np.array(y_train), scaler, close_scaler\n",
-    "\n",
+    "    return np.array(x_train), np.array(y_train), scaler, close_scaler\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8cbf5d76",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to build LSTM model\n",
     "def build_lstm_model(window_size, num_features, best_params):\n",
     "    units = best_params['units']\n",
@@ -146,8 +161,16 @@
     "    model.add(Dense(units=1))\n",
     "    model.compile(optimizer=Adam(learning_rate=learning_rate), loss='mean_squared_error')\n",
     "    print(\"Model built successfully!\")\n",
-    "    return model\n",
-    "\n",
+    "    return model\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "eb2e17c4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to train LSTM model\n",
     "def train_lstm_model(model, x_train, y_train, epochs, batch_size):\n",
     "    print(\"Training LSTM model...\")\n",
@@ -155,8 +178,16 @@
     "    reduce_lr = ReduceLROnPlateau(monitor='loss', factor=0.2, patience=5, min_lr=0.001)\n",
     "    history = model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size, verbose=1, callbacks=[early_stopping, reduce_lr])\n",
     "    print(\"Model trained successfully!\")\n",
-    "    return history\n",
-    "\n",
+    "    return history\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9e2b3a93",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to prepare and reshape test data\n",
     "def prepare_test_data(data, scaler, window_size):\n",
     "    print(\"Preparing test data...\")\n",
@@ -164,29 +195,60 @@
     "    x_test = [scaled_data[i-window_size:i, :] for i in range(window_size, len(scaled_data))]\n",
     "    x_test = np.array(x_test)\n",
     "    print(\"Test data prepared!\")\n",
-    "    return x_test\n",
-    "\n",
+    "    return x_test\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "21b5a99a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to make predictions\n",
     "def make_predictions(model, x_test, close_scaler):\n",
     "    print(\"Making predictions...\")\n",
     "    predictions = [close_scaler.inverse_transform([[model.predict(np.reshape(x_input, (1, x_input.shape[0], x_input.shape[1])))[0, 0]]])[0, 0] for x_input in x_test]\n",
     "    print(\"Predictions made successfully!\")\n",
-    "    return np.array(predictions)\n",
-    "\n",
+    "    return np.array(predictions)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ac6ff9c2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to calculate Directional Accuracy (DA)\n",
     "def calculate_da(predictions, true_values):\n",
     "    min_len = min(len(predictions), len(true_values))\n",
     "    correct_directions = sum(1 for i in range(1, min_len) if np.sign(predictions[i] - predictions[i-1]) == np.sign(true_values[i] - true_values[i-1]))\n",
     "    directional_accuracy = correct_directions / (min_len - 1)\n",
-    "    return directional_accuracy\n",
-    "\n",
+    "    return directional_accuracy\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b230d702",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "# Function to calculate Mean Absolute Error (MAE)\n",
     "def calculate_mae(predictions, true_values):\n",
     "    min_len = min(len(predictions), len(true_values))\n",
     "    mae = np.mean(np.abs(predictions[:min_len] - true_values[:min_len]))\n",
-    "    return mae\n",
-    "\n",
-    "# Function for hyperparameter optimization\n",
+    "    return mae\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "98bce4d8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
     "def objective(trial, window_size, num_features, x_train, y_train, close_values, scaler, close_scaler, close_data):\n",
     "    units = trial.suggest_int('units', 50, 200)\n",
     "    dropout_rate = trial.suggest_float('dropout_rate', 0.1, 0.5)\n",
@@ -215,45 +277,11 @@
    ]
   },
   {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## Main Execution\n",
-    "In this section, we will execute the main workflow: downloading data, preparing it, optimizing the model, and evaluating the results."
-   ]
-  },
-  {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": null,
+   "id": "b045d8db",
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "Enter the stock symbol (e.g., AAPL): AAPL\n",
-      "Downloading stock data...\n",
-      "Data downloaded successfully!\n",
-      "Plotting close price history...\n",
-      "Plotting candlestick chart...\n",
-      "Adding technical indicators...\n",
-      "Technical indicators added successfully!\n",
-      "Preparing training data...\n",
-      "Training data prepared!\n",
-      "Study created!\n",
-      "Trial 1: Hyperparameters: {'units': 76, 'dropout_rate': 0.39475970855001555, 'learning_rate': 0.006406057137417485, 'batch_size': 32}\n",
-      "Training LSTM model...\n",
-      "Model trained successfully!\n",
-      "Preparing test data...\n",
-      "Test data prepared!\n",
-      "Making predictions...\n",
-      "Predictions made successfully!\n",
-      "Directional Accuracy (DA): 0.49166666666666664\n",
-      "Mean Absolute Error (MAE): 0.05378551201556844\n",
-      "Final predicted price: 135.76\n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "def main():\n",
     "    try:\n",
@@ -298,7 +326,7 @@
     "        print(\"An error occurred:\", str(e))\n",
     "\n",
     "if __name__ == \"__main__\":\n",
-    "    main()"
+    "    main()\n"
    ]
   }
  ],
@@ -309,15 +337,16 @@
    "name": "python3"
   },
   "language_info": {
-   "name": "python",
-   "version": "3.8.5",
-   "mimetype": "text/x-python",
-   "file_extension": ".py",
-   "pygments_lexer": "ipython3",
    "codemirror_mode": {
     "name": "ipython",
     "version": 3
-   }
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.10"
   }
  },
  "nbformat": 5,

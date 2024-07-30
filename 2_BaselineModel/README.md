@@ -20,6 +20,23 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "# Importing necessary libraries\n",
+    "import optuna\n",
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import yfinance as yf\n",
+    "import matplotlib.pyplot as plt\n",
+    "from sklearn.preprocessing import RobustScaler\n",
+    "from keras.models import Sequential\n",
+    "from keras.layers import Dense, LSTM, Dropout\n",
+    "from keras.callbacks import EarlyStopping, ReduceLROnPlateau\n",
+    "import ta  # Technical analysis library\n",
+    "from mplfinance.original_flavor import candlestick_ohlc\n",
+    "import matplotlib.dates as mdates\n",
+    "from keras.optimizers import Adam\n",
+    "\n",
+    "plt.style.use('fivethirtyeight')\n"
+   ]
   },
   {
    "cell_type": "code",
@@ -28,6 +45,13 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "# Function to download stock data from Yahoo Finance\n",
+    "def download_stock_data(ticker, start_date, end_date):\n",
+    "    print(\"Downloading stock data...\")\n",
+    "    data = yf.download(ticker, start=start_date, end=end_date)\n",
+    "    print(\"Data downloaded successfully!\")\n",
+    "    return data\n"
+   ]
   },
   {
    "cell_type": "code",
@@ -225,6 +249,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "# Objective function for Optuna\n",
     "def objective(trial, window_size, num_features, x_train, y_train, close_values, scaler, close_scaler, close_data):\n",
     "    units = trial.suggest_int('units', 50, 200)\n",
     "    dropout_rate = trial.suggest_float('dropout_rate', 0.1, 0.5)\n",
@@ -259,6 +284,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "# Main function\n",
     "def main():\n",
     "    try:\n",
     "        ticker = input(\"Enter the stock symbol (e.g., AAPL): \").upper()\n",

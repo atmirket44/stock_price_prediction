@@ -7,7 +7,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "# Install the ta library\n",
+    "# Install the necessary libraries\n",
     "!pip install ta\n",
     "!pip install mplfinance\n",
     "!pip install optuna\n"
@@ -208,7 +208,7 @@
     "# Function to make predictions\n",
     "def make_predictions(model, x_test, close_scaler):\n",
     "    print(\"Making predictions...\")\n",
-    "    predictions = [close_scaler.inverse_transform([[model.predict(np.reshape(x_input, (1, x_input.shape[0], x_input.shape[1])))[0, 0]]])[0, 0] for x_input in x_test]\n",
+    "    predictions = [close_scaler.inverse_transform([[model.predict(np.reshape(x_input, (1, x_input.shape[0], x_input.shape[1]))[0, 0]]])[0, 0] for x_input in x_test]\n",
     "    print(\"Predictions made successfully!\")\n",
     "    return np.array(predictions)\n"
    ]

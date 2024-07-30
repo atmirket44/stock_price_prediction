@@ -20,23 +20,6 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "# Importing necessary libraries\n",
-    "import optuna\n",
-    "import numpy as np\n",
-    "import pandas as pd\n",
-    "import yfinance as yf\n",
-    "import matplotlib.pyplot as plt\n",
-    "from sklearn.preprocessing import RobustScaler\n",
-    "from keras.models import Sequential\n",
-    "from keras.layers import Dense, LSTM, Dropout\n",
-    "from keras.callbacks import EarlyStopping, ReduceLROnPlateau\n",
-    "import ta  # Technical analysis library\n",
-    "from mplfinance.original_flavor import candlestick_ohlc\n",
-    "import matplotlib.dates as mdates\n",
-    "from keras.optimizers import Adam\n",
-    "\n",
-    "plt.style.use('fivethirtyeight')\n"
-   ]
   },
   {
    "cell_type": "code",
@@ -45,13 +28,6 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "# Function to download stock data from Yahoo Finance\n",
-    "def download_stock_data(ticker, start_date, end_date):\n",
-    "    print(\"Downloading stock data...\")\n",
-    "    data = yf.download(ticker, start=start_date, end=end_date)\n",
-    "    print(\"Data downloaded successfully!\")\n",
-    "    return data\n"
-   ]
   },
   {
    "cell_type": "code",

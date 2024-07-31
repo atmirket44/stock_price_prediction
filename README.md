@@ -14,7 +14,7 @@
 
 ### Results Summary
 
-- **Best Model:** [Name of the best-performing model]
+- **Best Model:** [LSTM (Long Short-Term Memory) model ]
 - **Evaluation Metric:** [Mean Absolute Error (MAE), Directional Accuracy(DA)]
 - **Result:** [Directional Accuracy (DA): 0.5174506828528073,Mean Absolute Error (MAE): 1.9620724769238849]
 

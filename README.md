@@ -1,4 +1,4 @@
-# [Stock_Price_prediction]
+# [Stock_Price_Prediction]
 
 ## Repository Link
 

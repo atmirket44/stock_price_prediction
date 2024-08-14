@@ -1,3 +1,3 @@
 # Presentation
 
-**[Slides](Presentation_ML_opencampus.pptx)**
+**[Slides](Presentation_ML_opencampus.pdf)**

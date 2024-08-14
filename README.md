@@ -28,4 +28,4 @@
 
 ## Cover Image
 
-![Project Cover Image](CoverImage_Stock_Prices.png)
+![Project Cover Image](CoverImage/CoverImage_Stock_Prices.png)

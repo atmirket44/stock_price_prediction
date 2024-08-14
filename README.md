@@ -28,4 +28,4 @@
 
 ## Cover Image
 
-![Project Cover Image](CoverImage/Bildschirmfoto2024-08-14um12.49.06.png)
+![Project Cover Image](CoverImage_Stock_Prices.png)

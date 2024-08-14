@@ -24,8 +24,8 @@
 2. **[Dataset Characteristics](1_DatasetCharacteristics/exploratory_data_analysis.ipynb)**
 3. **[Baseline Model](2_BaselineModel/baseline_model.ipynb)**
 4. **[Model Definition and Evaluation](3_Model/model_definition_evaluation.ipynb)**
-5. **[Presentation](4_Presentation/PresentationML_openccampus.pptx)**
+5. **[Presentation](4_Presentation/Presentation_ML_openccampus.pdf)**
 
 ## Cover Image
 
-![Project Cover Image](https://www.canva.com/design/DAGMV8RbuK0/ZYflfsk47T4aThAZfVwVqA/edit?utm_content=DAGMV8RbuK0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+![Project Cover Image](CoverImage/Bildschirmfoto2024-08-14um12.49.06.png)
